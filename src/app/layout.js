@@ -23,8 +23,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased p-4`}
       >
-        <nav>
-          <ul>
+        <nav className="mb-4">
+          <ul className="flex space-x-4">
             <li><Link href="/">Inicio</Link></li>  
             <li><Link href="/login">Login</Link></li>  
             <li><Link href="/productos">Productos</Link></li>  
