@@ -9,7 +9,7 @@ export default function LoginPage() {
   const login = async (ev) => {
     ev.preventDefault();
 
-    const res = await fetch('http://localhost:3000/login', {
+    const res = await fetch('http://localhost:3000/users/login', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
