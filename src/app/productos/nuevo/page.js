@@ -1,21 +1,25 @@
 'use client';
 
 import { useState } from 'react';
+import { API } from '@/config';
 
 export default function NuevoProductoPage() { 
   const [nombre, setNombre] = useState('');
   const [precio, setPrecio] = useState('');
   const [msg, setMsg] = useState('');
 
-
+  
+  
   const crear = async (ev) => {
     ev.preventDefault();
+    const token = localStorage.getItem('token');
 
     try {
-      const res = await fetch('http://localhost:3000/productos', {
+      const res = await fetch(`${API}/productos`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           nombre,

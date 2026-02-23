@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { API } from '@/config';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ export default function LoginPage() {
   const login = async (ev) => {
     ev.preventDefault();
 
-    const res = await fetch('http://localhost:3000/users/login', {
+    const res = await fetch(`${API}/users/login`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'

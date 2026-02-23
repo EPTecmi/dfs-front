@@ -1,13 +1,14 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { API } from '@/config';
 
 export default function PrivadoPage() {
-  const [data, setData ] = useState({})
+  const [data, setData] = useState({})
 
   useEffect(() => {
     (async () => {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:3000/privado', {
+      const res = await fetch(`${API}/privado`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

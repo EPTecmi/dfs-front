@@ -1,5 +1,8 @@
+import { API } from '@/config';
+
 async function getProductoPorID(id) {
-  const res = await fetch(`http://localhost:3000/productos/${id}`);
+
+  const res = await fetch(`${API}/productos/${id}`);
 
   if (!res.ok) {
     throw new Error('Error al obtener producto');
