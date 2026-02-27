@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { API } from '@/config';
 import { apiFetch } from '@/lib/api';
 import StatusBox from '@/components/StatusBox';
 import { useRouter } from 'next/navigation';
