@@ -1,9 +1,11 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { API } from '@/config';
-import { setToken } from '@/lib/auth';
+import { getToken, setToken } from '@/lib/auth';
 import StatusBox from '@/components/StatusBox';
+import Button from '@/components/ui/Button';
+import Input from '@/components/ui/Input';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -14,6 +16,15 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  useEffect(() => {
+    // Si ya hay token, redirige a productos
+    const token = getToken();
+    if (token) {
+      router.replace('/productos/nuevo');
+    }
+    return;
+  }, [router]);
 
   const login = async (ev) => {
     ev.preventDefault();
@@ -53,9 +64,9 @@ export default function LoginPage() {
     <main className="p-4">
       <h1>Login</h1>
       <form onSubmit={login}>
-        <input value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
-        <input value={password} placeholder="Password" onChange={e => setPassword(e.target.value)} />
-        <button type='submit' className='border cursor-pointer'>{ loading ? 'Entrando...' : 'Entrar' }</button>
+        <Input value={email} placeholder="Email" onChange={e => setEmail(e.target.value)} />
+        <Input value={password} placeholder="Password" type="password" onChange={e => setPassword(e.target.value)} />
+        <Button type="submit" alt="Entrar" disabled={loading}>{ loading ? 'Entrando...' : 'Entrar' }</Button>
       </form>
       
       <div className='mt-3'>

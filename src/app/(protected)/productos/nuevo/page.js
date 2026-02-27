@@ -6,6 +6,8 @@ import { apiFetch } from '@/lib/api';
 import StatusBox from '@/components/StatusBox';
 import { useRouter } from 'next/navigation';
 import { clearToken } from '@/lib/auth';
+import Button from '@/components/ui/Button';
+import Input from '@/components/ui/Input';
 
 export default function NuevoProductoPage() { 
   const router = useRouter();
@@ -69,20 +71,20 @@ export default function NuevoProductoPage() {
 
       <form onSubmit={crear}>
         <div>
-          <input
+          <Input
             placeholder='Nombre'
             value={nombre}
             onChange={(e)=>setNombre(e.target.value)}
           />
         </div>
         <div>
-          <input
+          <Input
             placeholder='Precio'
             value={precio}
             onChange={(e)=>setPrecio(e.target.value)}
           />
         </div>
-        <button type="submit" disabled={loading} className='cursor-pointer border'>{loading ? 'Creando...' : 'Crear'}</button>
+        <Button type="submit" disabled={loading}>{loading ? 'Creando...' : 'Crear'}</Button>
       </form>
       <StatusBox loading={loading} error={error} success={success} />
     </main>
