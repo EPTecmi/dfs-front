@@ -53,6 +53,7 @@ export default function LoginPage() {
       setToken(data.token);
       setSuccess('Login Correcto');
       router.replace('/productos');
+      router.refresh();
     } catch (err) {
       setError('Error de red / API no disponible');
     } finally {
